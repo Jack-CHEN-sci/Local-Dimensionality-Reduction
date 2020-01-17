@@ -6,16 +6,15 @@
 
 关于PCA，需要强调的一点是：它是一个无监督学习的降维方法，我们可以基于数据特征之间的相互关系对不同的数据进行归类，无需分类标签。
 
-PCA是一种统计学方法，它使用 ***正交变换*** *(在线性代数中，正交变换是线性变换的一种，它从实内积空间V映射到V自身，且保证变换前后内积不变。因为向量的模长与夹角都是用内积定义的，所以正交变换前后一对向量各自的模长和它们的夹角都不变。)*  将一组可能相关的变量(每个变量都有不同的数值)的观测值转换成一组称为 ***主成分（Principal Component）*** 的 **线性不相关** 变量的值。
+PCA是一种统计学方法，它使用 ***正交变换*** *(在线性代数中，正交变换是线性变换的一种，它从实内积空间V映射到V自身，且保证变换前后内积不变。因为向量的模长与夹角都是用内积定义的，所以正交变换前后一对向量各自的模长和它们的夹角都不变。)*  将一组可能相关的变量(每个变量都有不同的数值)的观测值转换成一组称为 ***主成分（Principal Component）*** 的 **线性不相关** 变量的值。 ( *Wikipedia* )
 > **注意**: *特性* 、 *维度* 和 *变量* 是等价的，它们指的是同一种东西，可以替换使用。
 
-![](http://www.sthda.com/english/sthda-upload/figures/principal-component-methods/006-principal-component-analysis-color-individuals-by-groups-and-variables-by-contributions-1.png)
+<img src="http://www.sthda.com/english/sthda-upload/figures/principal-component-methods/006-principal-component-analysis-color-individuals-by-groups-and-variables-by-contributions-1.png" width = 50% height = 50% />
 
 ### 什么是“主成分”？
 主成分是PCA算法的关键，它们表示隐藏在数据背后的内容。通俗地说，将数据从一个高维空间投影到一个较低维 —— 不妨假设是三维 —— 空间中时，这三个维度就是捕获/保留了数据大部分差异信息的三个“主成分”。
 
 主成分含有 **大小** 和 **方向** 。方向表示数据在哪条 *"主轴"* 上最分散，或者说方差最大；大小表示PCA将数据投影到该 *"主轴"* 上后的方差。*第一主成分* 具有数据集的最大方差，“第二、第三 …… 主成分”的方差依次递减，以此类推，并且每个主成分都与前一个主成分正交。
-( *Wikipedia* )
 
 通过这种方式，若给定一组x相关的y个样本，就能从这y个样本中得到一组u不相关的主成分。每个主成分代表着从数据中捕获的整体方差的一部分。
 
@@ -29,4 +28,4 @@ PCA是一种统计学方法，它使用 ***正交变换*** *(在线性代数中�
 
 ## PCA算法
 
-![PCA算法](https://pbs.twimg.com/media/DJaIzUKUEAAl6ga.jpg)
+<img src="http://pbs.twimg.com/media/DJaIzUKUEAAl6ga.jpg" width = 50% height = 50% />
