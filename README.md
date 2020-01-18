@@ -13,25 +13,6 @@ which would cause inconsistency in visualization, which further leads to inconve
 
 ## Basic Algorithms
 ### K Nearest Neighbor (KNN)
-K-Nearest Neighbors, or KNN for short, is one of the simplest machine learning algorithms and is used in a wide array of institutions. 
-KNN is a non-parametric, lazy learning algorithm.
-#### Pros:
-+ No assumptions about data
-+ Simple algorithm — easy to understand
-+ Can be used for classification and regression
-#### Cons:
-+ High memory requirement — All of the training data must be present in memory in order to calculate the closest K neighbors
-+ Sensitive to irrelevant features
-+ Sensitive to the scale of the data since we’re computing the distance to the closest K points
-#### Algorithm:
-```
-Preprocessing:
-  1. Pick a value for K (i.e. 6);
-  2. Take the K nearest neighbors of the new data point according to their Euclidean distance;
-Prediction:
-  Among these neighbors, count the number of data points in each category 
-  and assign the new data point to the category where you counted the most neighbors;
-```
 ### PCA, MDS, LLE, Isomap, t-SNE
 ### Stress Majorization 
 
