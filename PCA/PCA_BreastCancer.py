@@ -11,6 +11,11 @@ from sklearn.datasets import load_breast_cancer
 '''
 import numpy as np
 import pandas as pd
+# import StandardScaler module to apply normalization
+from sklearn.preprocessing import StandardScaler
+# import the PCA module
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -50,6 +55,38 @@ def main():
     breast_dataset['label'].replace(0, 'Benign', inplace=True)
     breast_dataset['label'].replace(1, 'Malignant', inplace=True)
     print(breast_dataset.tail())
+
+    # Standardizing the data
+    x = breast_dataset.loc[:, features].values  # select only the features from the breast_dataset
+    x = StandardScaler().fit_transform(x)  # normalizing the features
+
+    # Convert the normalized features into a tabular format
+    feat_cols = ['feature' + str(i) for i in range(x.shape[1])]
+    normalised_breast = pd.DataFrame(x, columns=feat_cols)
+    print("\nNormalised data:\n", normalised_breast.tail())
+
+    # PCA
+    pca_breast = PCA(n_components=2)
+    principalComponents_breast = pca_breast.fit_transform(x)
+    principal_breast_Df = pd.DataFrame(data=principalComponents_breast
+                                       , columns=['principal component 1', 'principal component 2'])
+    print(principal_breast_Df.tail())
+
+    # Draw a plot
+    plt.figure(figsize=(10, 10))
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=14)
+    plt.xlabel('Principal Component - 1', fontsize=20)
+    plt.ylabel('Principal Component - 2', fontsize=20)
+    plt.title("Principal Component Analysis of Breast Cancer Dataset", fontsize=20)
+    targets = ['Benign', 'Malignant']
+    colors = ['r', 'g']
+    for target, color in zip(targets, colors):
+        indicesToKeep = breast_dataset['label'] == target
+        plt.scatter(principal_breast_Df.loc[indicesToKeep, 'principal component 1']
+                    , principal_breast_Df.loc[indicesToKeep, 'principal component 2'], c=color, s=50)
+    plt.legend(targets, prop={'size': 15})
+    plt.show()
 
 
 if __name__ == '__main__':
